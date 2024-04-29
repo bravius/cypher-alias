@@ -5,8 +5,8 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "clean": "rm dist -rf && rm node_modules -rf",
-    "build": "tsc",
+    "clean": "rm node_modules -rf && rm yarn.lock",
+    "build": "rm dist -rf && tsc",
     "test": "jest",
     "parser": "./bin/tool.sh antlr4"
   },
