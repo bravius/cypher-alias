@@ -1,7 +1,7 @@
 {
   "name": "cypher-alias",
   "version": "1.0.0",
-  "description": "A TypeScript library to extract aliases from a Cypher query.",
+  "description": "A TypeScript function to extract aliases from a Cypher query.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
