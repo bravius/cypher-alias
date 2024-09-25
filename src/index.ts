@@ -32,8 +32,8 @@ class TerminalVisitor extends CypherVisitor<string> {
 
 class CustomCypherVisitor extends CypherVisitor<void> {
   result: Array<string> = [];
-  visitOC_ProjectionItems = (ctx: OC_ProjectionItemsContext): void => {
-    for (const ctx2 of ctx.oC_ProjectionItem_list()) {
+  visitOC_Return = (ctx: OC_ReturnContext): void => {
+    for (const ctx2 of ctx.oC_ProjectionBody().oC_ProjectionItems().oC_ProjectionItem_list()) {
       if (ctx2.oC_Variable()) {
         this.result.push(visit(ctx2.oC_Variable(), new TerminalVisitor()));
       } else if (ctx2.oC_Expression()) {
@@ -43,6 +43,17 @@ class CustomCypherVisitor extends CypherVisitor<void> {
       }
     }
   };
+  // visitOC_ProjectionItems = (ctx: OC_ProjectionItemsContext): void => {
+  //   for (const ctx2 of ctx.oC_ProjectionItem_list()) {
+  //     if (ctx2.oC_Variable()) {
+  //       this.result.push(visit(ctx2.oC_Variable(), new TerminalVisitor()));
+  //     } else if (ctx2.oC_Expression()) {
+  //       this.result.push(visit(ctx2.oC_Expression(), new TerminalVisitor()));
+  //     } else {
+  //       throw new Error('unhandled condition');
+  //     }
+  //   }
+  // };
 }
 
 export const getCypherAliases = (input: string): string[] => {
