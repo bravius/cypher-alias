@@ -32,8 +32,8 @@ class CustomCypherVisitor extends CypherVisitor_1.default {
     constructor() {
         super(...arguments);
         this.result = [];
-        this.visitOC_ProjectionItems = (ctx) => {
-            for (const ctx2 of ctx.oC_ProjectionItem_list()) {
+        this.visitOC_Return = (ctx) => {
+            for (const ctx2 of ctx.oC_ProjectionBody().oC_ProjectionItems().oC_ProjectionItem_list()) {
                 if (ctx2.oC_Variable()) {
                     this.result.push(visit(ctx2.oC_Variable(), new TerminalVisitor()));
                 }
@@ -45,6 +45,17 @@ class CustomCypherVisitor extends CypherVisitor_1.default {
                 }
             }
         };
+        // visitOC_ProjectionItems = (ctx: OC_ProjectionItemsContext): void => {
+        //   for (const ctx2 of ctx.oC_ProjectionItem_list()) {
+        //     if (ctx2.oC_Variable()) {
+        //       this.result.push(visit(ctx2.oC_Variable(), new TerminalVisitor()));
+        //     } else if (ctx2.oC_Expression()) {
+        //       this.result.push(visit(ctx2.oC_Expression(), new TerminalVisitor()));
+        //     } else {
+        //       throw new Error('unhandled condition');
+        //     }
+        //   }
+        // };
     }
 }
 const getCypherAliases = (input) => {

@@ -1,6 +1,6 @@
 import { CharStreams, CommonTokenStream, ErrorListener, ParseTreeVisitor, ParserRuleContext, RecognitionException, Recognizer, TerminalNode, Token } from 'antlr4';
 import CypherLexer from './parser/CypherLexer';
-import CypherParser, { OC_ProjectionItemsContext } from './parser/CypherParser';
+import CypherParser, { OC_ReturnContext } from './parser/CypherParser';
 import CypherVisitor from './parser/CypherVisitor';
 
 const visit = (ctx: ParserRuleContext, visitor: ParseTreeVisitor<void>) => {
